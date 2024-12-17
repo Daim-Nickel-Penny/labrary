@@ -140,7 +140,7 @@ export function PorosityOutputCard() {
   return (
     <Card className="w-[280px]">
       <CardHeader>
-        <CardTitle className="text-xl text-white/80">
+        <CardTitle className="select-none text-xl text-white/80">
           Porosity of Electrode
         </CardTitle>
       </CardHeader>

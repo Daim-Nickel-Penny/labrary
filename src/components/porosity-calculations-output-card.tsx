@@ -7,13 +7,15 @@ export function PorosityCalculationsOutputCard() {
   return (
     <Card className="w-[280px]">
       <CardHeader>
-        <CardTitle className="text-xl text-white/80">Calculations</CardTitle>
+        <CardTitle className="select-none text-xl text-white/80">
+          Calculations
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <div>
           <div className="flex flex-col gap-2">
             <div className="flex justify-between">
-              <div className="text-xs font-medium text-white/60">
+              <div className="select-none text-xs font-medium text-white/60">
                 Mass/Density
                 <span className="p-1 font-serif text-xs italic">(AM)</span>
               </div>
@@ -22,7 +24,7 @@ export function PorosityCalculationsOutputCard() {
               </div>
             </div>
             <div className="flex justify-between">
-              <div className="text-xs font-medium text-white/60">
+              <div className="select-none text-xs font-medium text-white/60">
                 Mass/Density
                 <span className="p-1 font-serif text-xs italic">(CA)</span>
               </div>
@@ -31,7 +33,7 @@ export function PorosityCalculationsOutputCard() {
               </div>
             </div>
             <div className="flex justify-between">
-              <div className="text-xs font-medium text-white/60">
+              <div className="select-none text-xs font-medium text-white/60">
                 Mass/Density
                 <span className="p-1 font-serif text-xs italic">(B)</span>
               </div>
@@ -43,7 +45,7 @@ export function PorosityCalculationsOutputCard() {
           <hr className="my-3 w-full border-t border-white/20" />
           <div className="flex flex-col gap-2">
             <div className="flex justify-between">
-              <div className="text-xs font-medium text-white/60">
+              <div className="select-none text-xs font-medium text-white/60">
                 Sum
                 <span className="p-1 font-serif text-xs italic">(AM)</span>
               </div>
@@ -52,7 +54,7 @@ export function PorosityCalculationsOutputCard() {
               </div>
             </div>
             <div className="flex justify-between">
-              <div className="text-xs font-medium text-white/60">
+              <div className="select-none text-xs font-medium text-white/60">
                 Sum x Mass of Electrode
                 <span className="p-1 font-serif text-xs italic">(CA)</span>
               </div>
@@ -61,7 +63,7 @@ export function PorosityCalculationsOutputCard() {
               </div>
             </div>
             <div className="flex justify-between">
-              <div className="text-xs font-medium text-white/60">
+              <div className="select-none text-xs font-medium text-white/60">
                 Volume - (Mass x Sum)
                 <span className="p-1 font-serif text-xs italic">(B)</span>
               </div>

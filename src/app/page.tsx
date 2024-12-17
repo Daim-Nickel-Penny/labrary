@@ -37,7 +37,7 @@ export default function HomePage() {
           <Separator orientation="vertical" className="mr-2 h-4" />
           <Breadcrumb>
             <BreadcrumbList>
-              <BreadcrumbItem className="hidden md:block">
+              <BreadcrumbItem className="hidden select-none md:block">
                 <BreadcrumbLink href="#">Your Research Tools</BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator className="hidden md:block" />

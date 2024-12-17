@@ -172,6 +172,7 @@ export const MassCard: React.FC = () => {
                       {...field}
                       readOnly
                       className="bg-neutral-800"
+                      value={electrodeData.mass.electrode}
                     />
                   </FormControl>
                   <FormMessage />
