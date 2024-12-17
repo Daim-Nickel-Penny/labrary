@@ -1,6 +1,8 @@
+import { DensityCard } from "~/components/DensityCard";
 import { DimensionCard } from "~/components/DimensionCard";
 import { MassCard } from "~/components/MassCard";
 import { MaterialFractionCard } from "~/components/MaterialFractionCard";
+import { MgMassCard } from "~/components/MgMassCard";
 import { ThicknessCard } from "~/components/ThicknessCard";
 
 export default function HomePage() {
@@ -11,6 +13,8 @@ export default function HomePage() {
       <MassCard />
       <DimensionCard />
       <MaterialFractionCard />
+      <DensityCard />
+      <MgMassCard />
 
       {/* <Button variant={"ghost"}>Button</Button> */}
     </main>
