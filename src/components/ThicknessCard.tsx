@@ -167,7 +167,13 @@ export const ThicknessCard: React.FC = () => {
                     Thickness of Material
                   </FormLabel>
                   <FormControl>
-                    <Input placeholder="Material" {...field} />
+                    <Input
+                      placeholder="Material"
+                      {...field}
+                      readOnly
+                      className="bg-neutral-800"
+                      value={electrodeData.thickness.material}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

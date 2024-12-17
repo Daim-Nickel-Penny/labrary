@@ -36,7 +36,7 @@ export const useElectrodeStore = create<ElectrodeState>((set) => ({
       length: 0,
       breadth: 0,
       area: 0,
-      volume: 0,
+      volume: 1,
     },
     materialFractions: {
       activeMaterial: 0,

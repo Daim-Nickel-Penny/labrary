@@ -172,7 +172,13 @@ export const DimensionCard: React.FC = () => {
                     Area of Electrode
                   </FormLabel>
                   <FormControl>
-                    <Input placeholder="Area of Electrode" {...field} />
+                    <Input
+                      placeholder="Area of Electrode"
+                      {...field}
+                      readOnly
+                      className="bg-neutral-800"
+                      value={electrodeData.dimensions.area}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -188,7 +194,13 @@ export const DimensionCard: React.FC = () => {
                     Volume of Electrode
                   </FormLabel>
                   <FormControl>
-                    <Input placeholder="Volume of Electrode" {...field} />
+                    <Input
+                      placeholder="Volume of Electrode"
+                      {...field}
+                      readOnly
+                      className="bg-neutral-800"
+                      value={electrodeData.dimensions.volume}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

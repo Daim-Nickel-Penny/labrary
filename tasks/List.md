@@ -117,3 +117,4 @@ src/
 # Questions
 
 - how many decimal places to show?
+- how to calculate thickness of material? also for me, in handleCalculate add a step to calculate thickness of material

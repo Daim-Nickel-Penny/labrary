@@ -167,7 +167,12 @@ export const MassCard: React.FC = () => {
                     Electrode Mass
                   </FormLabel>
                   <FormControl>
-                    <Input placeholder="Electrode" {...field} />
+                    <Input
+                      placeholder="Electrode"
+                      {...field}
+                      readOnly
+                      className="bg-neutral-800"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

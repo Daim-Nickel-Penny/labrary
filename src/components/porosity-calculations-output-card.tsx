@@ -1,7 +1,9 @@
 import * as React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { useElectrodeStore } from "~/store/electrodeStore";
 
 export function PorosityCalculationsOutputCard() {
+  const { calculatedOutputs } = useElectrodeStore();
   return (
     <Card className="w-[280px]">
       <CardHeader>
@@ -16,7 +18,7 @@ export function PorosityCalculationsOutputCard() {
                 <span className="p-1 font-serif text-xs italic">(AM)</span>
               </div>
               <div className="text-wrap break-words font-mono text-lg font-bold">
-                0.635135
+                {calculatedOutputs.porosity.am}
               </div>
             </div>
             <div className="flex justify-between">
@@ -25,7 +27,7 @@ export function PorosityCalculationsOutputCard() {
                 <span className="p-1 font-serif text-xs italic">(CA)</span>
               </div>
               <div className="text-wrap break-words font-mono text-lg font-bold">
-                0.3125
+                {calculatedOutputs.porosity.ca}
               </div>
             </div>
             <div className="flex justify-between">
@@ -34,7 +36,7 @@ export function PorosityCalculationsOutputCard() {
                 <span className="p-1 font-serif text-xs italic">(B)</span>
               </div>
               <div className="text-wrap break-words font-mono text-lg font-bold">
-                0.00555
+                {calculatedOutputs.porosity.b}
               </div>
             </div>
           </div>
@@ -46,7 +48,7 @@ export function PorosityCalculationsOutputCard() {
                 <span className="p-1 font-serif text-xs italic">(AM)</span>
               </div>
               <div className="text-wrap break-words font-mono text-lg font-bold">
-                0.9531
+                {calculatedOutputs.calculations.sum}
               </div>
             </div>
             <div className="flex justify-between">
@@ -55,7 +57,7 @@ export function PorosityCalculationsOutputCard() {
                 <span className="p-1 font-serif text-xs italic">(CA)</span>
               </div>
               <div className="text-wrap break-words font-mono text-lg font-bold">
-                0.00943
+                {calculatedOutputs.calculations.sumMass}
               </div>
             </div>
             <div className="flex justify-between">
@@ -64,7 +66,7 @@ export function PorosityCalculationsOutputCard() {
                 <span className="p-1 font-serif text-xs italic">(B)</span>
               </div>
               <div className="text-wrap break-words font-mono text-lg font-bold">
-                0.003
+                {calculatedOutputs.calculations.volume}
               </div>
             </div>
           </div>
