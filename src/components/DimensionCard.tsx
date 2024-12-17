@@ -96,7 +96,7 @@ export const DimensionCard: React.FC = () => {
   }, [form, setElectrodeData]);
 
   return (
-    <Card className="w-[350px]">
+    <Card className="w-[280px]">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <div className="select-none text-white/60">
