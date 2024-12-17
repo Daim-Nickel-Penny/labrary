@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -16,7 +16,14 @@ import {
   FormLabel,
   FormMessage,
 } from "./ui/form";
-import { Button } from "./ui/button";
+import { InfoIcon } from "lucide-react";
+import { useElectrodeStore } from "~/store/electrodeStore";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip";
 
 const thicknessFormSchema = z.object({
   coatedElectrode: z
@@ -32,39 +39,100 @@ const thicknessFormSchema = z.object({
 });
 
 export const ThicknessCard: React.FC = () => {
+  const { electrodeData, setElectrodeData } = useElectrodeStore();
+
   const form = useForm<z.infer<typeof thicknessFormSchema>>({
     resolver: zodResolver(thicknessFormSchema),
     defaultValues: {
-      coatedElectrode: 0,
-      foil: 0,
-      material: 0,
+      coatedElectrode: electrodeData.thickness.coatedElectrode,
+      foil: electrodeData.thickness.foil,
+      material: electrodeData.thickness.material,
     },
   });
 
-  function onSubmit(values: z.infer<typeof thicknessFormSchema>) {
-    console.log(values);
-  }
+  useEffect(() => {
+    const subscription = form.watch((values) => {
+      const coatedElectrodeParsedFloat = parseFloat(
+        String(values.coatedElectrode),
+      );
+      const foilParsedFloat = parseFloat(String(values.foil));
+      const materialParsedFloat = parseFloat(String(values.material));
 
-  /**Auto Submit */
+      // Validate inputs using Zod schema
+      const parsedData = {
+        coatedElectrode: coatedElectrodeParsedFloat,
+        foil: foilParsedFloat,
+        material: materialParsedFloat,
+      };
+
+      const validationResult = thicknessFormSchema.safeParse(parsedData);
+
+      if (validationResult.success) {
+        setElectrodeData({
+          thickness: {
+            coatedElectrode: parsedData.coatedElectrode,
+            foil: parsedData.foil,
+            material: parsedData.material,
+          },
+        });
+
+        //reset particular field errors
+        form.clearErrors();
+      } else {
+        const validationErrors = validationResult.error.issues ?? [];
+
+        if (validationErrors.length > 0) {
+          validationErrors.forEach((error) => {
+            const message = error.message;
+            const path = error.path[0] as keyof typeof values;
+
+            form.setError(path, {
+              type: "value",
+              message,
+            });
+          });
+        }
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, [form, setElectrodeData]);
 
   return (
     <Card className="w-[350px]">
       <CardHeader>
-        <CardTitle>
-          Thickness Inputs{" "}
-          <span className="ml-1 font-serif text-sm italic">(cm)</span>
+        <CardTitle className="flex items-center justify-between">
+          <div className="select-none">
+            Thickness Inputs
+            <span className="ml-1 font-serif text-sm italic">(cm)</span>
+          </div>
+          <div className="cursor-pointer">
+            <TooltipProvider delayDuration={200}>
+              <Tooltip>
+                <TooltipTrigger>
+                  <InfoIcon
+                    size={15}
+                    className="stroke-slate-500 transition-all duration-75 ease-in-out hover:stroke-slate-100"
+                  />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Please enter the thickness of the electrode.</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
         </CardTitle>
         {/* <CardDescription></CardDescription> */}
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form className="space-y-8">
             <FormField
               control={form.control}
               name="coatedElectrode"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-sans font-semibold">
+                  <FormLabel className="select-none font-sans font-semibold">
                     Thickness of Coated Electrode
                   </FormLabel>
                   <FormControl>
@@ -79,10 +147,13 @@ export const ThicknessCard: React.FC = () => {
               name="foil"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Thickness of Foil</FormLabel>
+                  <FormLabel className="select-none font-sans font-semibold">
+                    Thickness of Foil
+                  </FormLabel>
                   <FormControl>
                     <Input placeholder="Foil" {...field} />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -91,10 +162,13 @@ export const ThicknessCard: React.FC = () => {
               name="material"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Thickness of Material</FormLabel>
+                  <FormLabel className="select-none font-sans font-semibold">
+                    Thickness of Material
+                  </FormLabel>
                   <FormControl>
                     <Input placeholder="Material" {...field} />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
