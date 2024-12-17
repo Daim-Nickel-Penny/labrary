@@ -120,7 +120,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarContent>
           <SidebarGroup className="px-0">
             <SidebarGroupContent>
-              <div className="flex flex-col justify-center gap-4 p-3">
+              <div className="m-0 flex flex-col justify-center gap-4 p-3 pt-0">
                 <PorosityOutputCard />
                 <PorosityCalculationsOutputCard />
               </div>

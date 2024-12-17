@@ -113,3 +113,7 @@ src/
 │ ├── styles/ # Tailwind custom styles if needed
 │ └── api/ # API routes if backend calculation is needed
 │ └── calculate/route.ts
+
+# Questions
+
+- how many decimal places to show?

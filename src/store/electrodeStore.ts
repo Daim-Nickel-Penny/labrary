@@ -1,9 +1,23 @@
 import { create } from "zustand";
 import type { ElectrodeInput } from "~/types/electrode";
 
+interface ElectrodeCalculatedOutputs {
+  porosity: {
+    am: number;
+    ca: number;
+    b: number;
+  };
+  calculations: {
+    sum: number;
+    sumMass: number;
+    volume: number;
+  };
+}
 interface ElectrodeState {
   electrodeData: ElectrodeInput;
+  calculatedOutputs: ElectrodeCalculatedOutputs;
   setElectrodeData: (data: Partial<ElectrodeInput>) => void;
+  setCalculatedOutputs: (data: Partial<ElectrodeCalculatedOutputs>) => void;
 }
 
 export const useElectrodeStore = create<ElectrodeState>((set) => ({
@@ -35,9 +49,38 @@ export const useElectrodeStore = create<ElectrodeState>((set) => ({
       binder: 0,
     },
     massMg: 0,
+    outputs: {
+      porosity: {
+        am: 0,
+        ca: 0,
+        b: 0,
+      },
+      calculations: {
+        sum: 0,
+        sumMass: 0,
+        volume: 0,
+      },
+    },
+  },
+  calculatedOutputs: {
+    porosity: {
+      am: 0,
+      ca: 0,
+      b: 0,
+    },
+    calculations: {
+      sum: 0,
+      sumMass: 0,
+      volume: 0,
+    },
   },
   setElectrodeData: (data) =>
     set((state) => ({
       electrodeData: { ...state.electrodeData, ...data },
+    })),
+
+  setCalculatedOutputs: (data) =>
+    set((state) => ({
+      calculatedOutputs: { ...state.calculatedOutputs, ...data },
     })),
 }));

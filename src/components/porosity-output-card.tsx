@@ -18,7 +18,9 @@ export function PorosityOutputCard() {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <h1>25.43783314</h1>
+        <h1 className="p-2 font-mono text-4xl font-semibold text-white/80">
+          25.43783314
+        </h1>
       </CardContent>
       <CardFooter className="flex justify-between">
         <Button variant="outline">Clear All</Button>
