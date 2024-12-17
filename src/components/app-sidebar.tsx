@@ -17,6 +17,8 @@ import {
   SidebarMenuItem,
 } from "~/components/ui/sidebar";
 import { Switch } from "~/components/ui/switch";
+import { PorosityOutputCard } from "./porosity-output-card";
+import { PorosityCalculationsOutputCard } from "./porosity-calculations-output-card";
 
 const data = {
   user: {
@@ -104,7 +106,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <Sidebar collapsible="none" className="hidden flex-1 md:flex">
         <SidebarHeader className="gap-3.5 border-b p-4">
           <div className="flex w-full items-center justify-between">
-            <div className="text-base font-medium text-foreground">Labrary</div>
+            <div className="font-serif text-base font-medium italic text-foreground">
+              Labrary
+            </div>
             <Label className="flex items-center gap-2 text-sm">
               <span>
                 <Moon size={16} />
@@ -116,10 +120,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarContent>
           <SidebarGroup className="px-0">
             <SidebarGroupContent>
-              <div>
-                hgfldkgnjf. vfvhjkflv flkvh fdvh fdvhfdlvhdf ghf gfjdkhg fdjkghf
-                djgkfhd gfdjkhg fdkjghfd gjkfdhg fdjkghf dkjghfd gkjfdhg fdjkhg
-                fdjkghf dgkjhfdg j
+              <div className="flex flex-col justify-center gap-4 p-3">
+                <PorosityOutputCard />
+                <PorosityCalculationsOutputCard />
               </div>
             </SidebarGroupContent>
           </SidebarGroup>
