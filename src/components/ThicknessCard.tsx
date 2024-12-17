@@ -103,7 +103,7 @@ export const ThicknessCard: React.FC = () => {
     <Card className="w-[280px]">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
-          <div className="select-none text-white/60">
+          <div className="select-none text-xl text-white/60">
             Thickness Inputs
             <span className="ml-1 font-serif text-sm italic">(cm)</span>
           </div>
