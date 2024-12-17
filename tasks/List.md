@@ -84,3 +84,32 @@ To-Do List for Porosity of Electrode Calculator (Next.js 15, T3 App, Tailwind, S
 10. Deployment
     Deploy the application on Vercel for easy hosting.
     Test functionality on different devices for responsiveness.
+
+src/
+│
+├── app/ # Next.js App Router root
+│ ├── page.tsx # Main page for the calculator
+│ ├── components/ # Shared UI components
+│ │ ├── ThicknessCard.tsx
+│ │ ├── MassCard.tsx
+│ │ ├── DimensionCard.tsx
+│ │ ├── MaterialFractionCard.tsx
+│ │ ├── DensityCard.tsx
+│ │ ├── ResultCard.tsx
+│ │ └── FormSubmitButton.tsx
+│ │
+│ ├── hooks/ # Custom hooks for form management
+│ │ └── useElectrodeForm.ts
+│ │
+│ ├── utils/ # Utility functions
+│ │ └── calculatePorosity.ts
+│ │
+│ ├── types/ # TypeScript interfaces
+│ │ └── electrode.ts
+│ │
+│ ├── lib/ # Optional: Zod schemas or form handling libraries
+│ │ └── schemas.ts
+│ │
+│ ├── styles/ # Tailwind custom styles if needed
+│ └── api/ # API routes if backend calculation is needed
+│ └── calculate/route.ts

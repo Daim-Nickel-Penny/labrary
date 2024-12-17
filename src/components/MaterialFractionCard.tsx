@@ -25,54 +25,49 @@ import {
   TooltipTrigger,
 } from "./ui/tooltip";
 
-const thicknessFormSchema = z.object({
-  coatedElectrode: z
-    .number()
-    .min(0, {
-      message: "Coated Electrode Thickness must be greater than 0",
-    })
-    .max(10000, {
-      message: "Coated Electrode Thickness must be lower",
-    }),
-  foil: z.number().min(0).max(100000),
-  material: z.number().min(0).max(100000),
+const materialFractionFormSchema = z.object({
+  activeMaterial: z.number().min(0).max(100000),
+  carbonAdditive: z.number().min(0).max(100000),
+  binder: z.number().min(0).max(100000),
 });
 
-export const ThicknessCard: React.FC = () => {
+export const MaterialFractionCard: React.FC = () => {
   const { electrodeData, setElectrodeData } = useElectrodeStore();
 
-  const form = useForm<z.infer<typeof thicknessFormSchema>>({
-    resolver: zodResolver(thicknessFormSchema),
+  const form = useForm<z.infer<typeof materialFractionFormSchema>>({
+    resolver: zodResolver(materialFractionFormSchema),
     defaultValues: {
-      coatedElectrode: electrodeData.thickness.coatedElectrode,
-      foil: electrodeData.thickness.foil,
-      material: electrodeData.thickness.material,
+      activeMaterial: electrodeData.materialFractions.activeMaterial,
+      carbonAdditive: electrodeData.materialFractions.carbonAdditive,
+      binder: electrodeData.materialFractions.binder,
     },
   });
 
   useEffect(() => {
     const subscription = form.watch((values) => {
-      const coatedElectrodeParsedFloat = parseFloat(
-        String(values.coatedElectrode),
+      const activeMaterialParsedFloat = parseFloat(
+        String(values.activeMaterial),
       );
-      const foilParsedFloat = parseFloat(String(values.foil));
-      const materialParsedFloat = parseFloat(String(values.material));
+      const carbonAdditiveParsedFloat = parseFloat(
+        String(values.carbonAdditive),
+      );
+      const binderParsedFloat = parseFloat(String(values.binder));
 
       // Validate inputs using Zod schema
       const parsedData = {
-        coatedElectrode: coatedElectrodeParsedFloat,
-        foil: foilParsedFloat,
-        material: materialParsedFloat,
+        activeMaterial: activeMaterialParsedFloat,
+        carbonAdditive: carbonAdditiveParsedFloat,
+        binder: binderParsedFloat,
       };
 
-      const validationResult = thicknessFormSchema.safeParse(parsedData);
+      const validationResult = materialFractionFormSchema.safeParse(parsedData);
 
       if (validationResult.success) {
         setElectrodeData({
-          thickness: {
-            coatedElectrode: parsedData.coatedElectrode,
-            foil: parsedData.foil,
-            material: parsedData.material,
+          materialFractions: {
+            activeMaterial: parsedData.activeMaterial,
+            carbonAdditive: parsedData.carbonAdditive,
+            binder: parsedData.binder,
           },
         });
 
@@ -104,8 +99,17 @@ export const ThicknessCard: React.FC = () => {
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <div className="select-none text-white/60">
-            Thickness Inputs
-            <span className="ml-1 font-serif text-sm italic">(cm)</span>
+            Material Properites
+            {/* <span className="ml-1 font-serif text-sm italic">
+              (cm/
+              <var>
+                cm<sup>2</sup>
+              </var>
+              <var>
+                cm<sup>3</sup>
+              </var>
+              )
+            </span> */}
           </div>
           <div className="cursor-pointer">
             <TooltipProvider delayDuration={200}>
@@ -117,7 +121,7 @@ export const ThicknessCard: React.FC = () => {
                   />
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>Please enter the thickness of the electrode.</p>
+                  <p>Please enter the material properties of the electrode.</p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -130,14 +134,14 @@ export const ThicknessCard: React.FC = () => {
           <form className="space-y-8">
             <FormField
               control={form.control}
-              name="coatedElectrode"
+              name="activeMaterial"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="select-none font-sans text-white/80">
-                    Thickness of Coated Electrode
+                    Mass Fraction of Active Material
                   </FormLabel>
                   <FormControl>
-                    <Input placeholder="Coated Electrode" {...field} />
+                    <Input placeholder="Length of Electrode" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -145,14 +149,14 @@ export const ThicknessCard: React.FC = () => {
             />
             <FormField
               control={form.control}
-              name="foil"
+              name="carbonAdditive"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="select-none font-sans text-white/80">
-                    Thickness of Foil
+                    Mass Fraction of Carbon Additive
                   </FormLabel>
                   <FormControl>
-                    <Input placeholder="Foil" {...field} />
+                    <Input placeholder="Breadth of Electrode" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -160,14 +164,14 @@ export const ThicknessCard: React.FC = () => {
             />
             <FormField
               control={form.control}
-              name="material"
+              name="binder"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="select-none font-sans text-white/80">
-                    Thickness of Material
+                    Mass Fraction of Binder
                   </FormLabel>
                   <FormControl>
-                    <Input placeholder="Material" {...field} />
+                    <Input placeholder="Area of Electrode" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
