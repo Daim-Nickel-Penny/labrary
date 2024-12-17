@@ -114,7 +114,7 @@ export const DensityCard: React.FC = () => {
                 <TooltipTrigger>
                   <InfoIcon
                     size={15}
-                    className="stroke-slate-500 transition-all duration-75 ease-in-out hover:stroke-slate-100"
+                    className="stroke-white-500 transition-all duration-75 ease-in-out hover:stroke-slate-100"
                   />
                 </TooltipTrigger>
                 <TooltipContent>
