@@ -38,7 +38,9 @@ export default function HomePage() {
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem className="hidden select-none md:block">
-                <BreadcrumbLink href="#">Your Research Tools</BreadcrumbLink>
+                <BreadcrumbLink href="/" className="font-serif italic">
+                  Your Research Tools
+                </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator className="hidden md:block" />
               <BreadcrumbItem>

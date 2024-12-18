@@ -128,7 +128,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <span>
                 <Moon size={16} />
               </span>
-              <Switch className="shadow-none" />
+              <Switch className="shadow-none" aria-label="Theme switch" />
             </Label>
           </div>
         </SidebarHeader>

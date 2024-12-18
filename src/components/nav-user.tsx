@@ -50,7 +50,7 @@ export function NavUser({
                 <AvatarImage
                   src={user.avatar}
                   alt={user.name}
-                  className="opacity-30 grayscale"
+                  className="h-auto w-full object-contain opacity-30 grayscale"
                 />
                 <AvatarFallback className="rounded-lg">CN</AvatarFallback>
               </Avatar>

@@ -116,6 +116,7 @@ export const MaterialFractionCard: React.FC = () => {
               <Tooltip>
                 <TooltipTrigger>
                   <InfoIcon
+                    aria-label="Information"
                     size={15}
                     className="stroke-white-500 transition-all duration-75 ease-in-out hover:stroke-slate-100"
                   />
