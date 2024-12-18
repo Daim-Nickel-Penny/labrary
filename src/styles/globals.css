@@ -109,3 +109,81 @@
   scrollbar-width: thin; /* For Firefox: defines the width of the scrollbar */
   scrollbar-color: hsl(var(--border)) hsl(var(--background));
 }
+
+/*Christmas lights*/
+@keyframes combination {
+  0% {
+    opacity: 1;
+    filter: drop-shadow(0 0 2px currentColor);
+  }
+  20% {
+    opacity: 1;
+    animation-timing-function: steps(1);
+    filter: drop-shadow(0 0 2px currentColor);
+  }
+  40% {
+    animation-timing-function: steps(1);
+    animation-timing-function: ease-in-out;
+    opacity: 1;
+    filter: drop-shadow(0 0 4px currentColor);
+  }
+  21%,
+  23%,
+  25%,
+  27%,
+  29%,
+  31%,
+  33%,
+  35%,
+  37%,
+  39%,
+  70% {
+    opacity: 0.3;
+    filter: drop-shadow(0 0 0 currentColor);
+  }
+  50%,
+  85%,
+  95% {
+    opacity: 0.2;
+    filter: drop-shadow(0 0 0 currentColor);
+  }
+  60% {
+    animation-timing-function: ease;
+    opacity: 1;
+    filter: drop-shadow(0 0 2px currentColor);
+  }
+  80% {
+    animation-timing-function: ease;
+    animation-timing-function: steps(1);
+    opacity: 1;
+    filter: drop-shadow(0 0 4px currentColor);
+  }
+  to {
+    animation-timing-function: steps(1);
+    opacity: 1;
+    filter: drop-shadow(0 0 4px currentColor);
+  }
+}
+
+.xmas-green {
+  filter: drop-shadow(0 0 2px #26d97f);
+  animation: combination 8s infinite;
+}
+
+.xmas-red {
+  filter: drop-shadow(0 0 2px #ff4c4d);
+  animation: combination 8s infinite;
+  animation-delay: 0.2s;
+}
+
+.xmas-blue {
+  filter: drop-shadow(0 0 2px #6eb3f7);
+  animation: combination 8s infinite;
+  animation-delay: 0.4s;
+}
+
+.xmas-yellow {
+  filter: drop-shadow(0 0 2px #ffbf00);
+  animation: combination 8s infinite;
+  animation-delay: 0.6s;
+}

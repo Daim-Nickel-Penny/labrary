@@ -1,7 +1,14 @@
 "use client";
 
 import * as React from "react";
-import { Command, Inbox, HelpCircle, Moon } from "lucide-react";
+import {
+  Command,
+  Inbox,
+  HelpCircle,
+  Moon,
+  FlameKindling,
+  PawPrint,
+} from "lucide-react";
 
 import { NavUser } from "~/components/nav-user";
 import { Label } from "~/components/ui/label";
@@ -19,6 +26,7 @@ import {
 import { Switch } from "~/components/ui/switch";
 import { PorosityOutputCard } from "./porosity-output-card";
 import { PorosityCalculationsOutputCard } from "./porosity-calculations-output-card";
+import ChristmasLight from "./christmas-lights";
 
 const data = {
   user: {
@@ -61,8 +69,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenuItem>
               <SidebarMenuButton size="lg" asChild className="md:h-8 md:p-0">
                 <a href="#">
-                  <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                    <Command className="size-4" />
+                  <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                    <PawPrint className="size-4 stroke-white/50" />
                   </div>
                   <div className="grid flex-1 text-left text-sm leading-tight">
                     <span className="truncate font-semibold">Labrary</span>
@@ -103,12 +111,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
       {/* This is the second sidebar */}
       {/* We disable collapsible and let it fill remaining space */}
-      <Sidebar collapsible="none" className="hidden flex-1 md:flex">
+      <Sidebar collapsible="none" className="border-1 hidden flex-1 md:flex">
         <SidebarHeader className="gap-3.5 border-b p-4">
           <div className="flex w-full items-center justify-between">
-            <div className="font-serif text-base font-medium italic text-foreground">
+            <div
+              className="relative select-none font-serif text-base font-medium italic text-foreground"
+              title="Christmas"
+            >
               Labrary
+              <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-50">
+                <ChristmasLight />
+              </div>
             </div>
+
             <Label className="flex items-center gap-2 text-sm">
               <span>
                 <Moon size={16} />
@@ -120,7 +135,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarContent>
           <SidebarGroup className="px-0">
             <SidebarGroupContent>
-              <div className="m-0 flex flex-col justify-center gap-4 p-3 pt-0">
+              <div className="flex flex-col justify-center gap-4 p-1 pt-0">
                 <PorosityOutputCard />
                 <PorosityCalculationsOutputCard />
               </div>
